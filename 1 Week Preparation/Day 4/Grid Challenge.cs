@@ -24,10 +24,17 @@
 
                 for (int i = 0; i < grid.Count; i++)
                 {
+                    string linha = grid[i];
+
                     for (int j = 0; j < grid.Count; j++)
                     {
-                        int indexAlfabeto = alfabeto.IndexOf(grid[i][j]);
-                        int indexAlfabetoComparar = alfabeto.IndexOf(grid[i + 1][j]);
+                        int indexAlfabeto = alfabeto.IndexOf(linha[j]);
+                        int indexAlfabetoComparar = alfabeto.IndexOf(grid[i + j + 1][i]);
+
+                        if (indexAlfabetoComparar > indexAlfabeto)
+                        {
+                            return "NO";
+                        }
                     }
                 }
                 return "YES";
