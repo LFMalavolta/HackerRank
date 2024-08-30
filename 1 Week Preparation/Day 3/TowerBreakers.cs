@@ -16,9 +16,45 @@
 
             public static int towerBreakers(int n, int m)
             {
-                int result = 0;
+                // Se todas as torres têm altura 1, o jogador 2 sempre vence
+                if (m == 1)
+                {
+                    return 2;
+                }
+
+                // Se o número de torres for par, o jogador 2 sempre vence
+                // Se o número de torres for ímpar, o jogador 1 sempre vence
+                return n % 2 == 0 ? 2 : 1;
             }
 
+            public static int towerBreakers2(int n, int m)
+            {
+                int turn = 1;
+
+                List<int> towers = new List<int>();
+                for (int i = 0; i < n; i++)
+                {
+                    towers.Add(m);
+                }
+
+                for (int i = 0; i < towers.Count; i++)
+                {
+                    int tower = towers[i];
+                    while (tower != 1)
+                    {
+                        for (int number = tower / 2; number >= 1; number--)
+                        {
+                            if (tower % number == 0)
+                            {
+                                tower /= number;
+                                break;
+                            }
+                        }
+                        turn = turn == 1 ? 2 : 1;
+                    }
+                }
+                return turn;
+            }
         }
 
         class Solution

@@ -18,7 +18,7 @@ namespace HackerRank._1_Week_Preparation.Day_2
             {
                 long size = 100;
 
-                List<int> result = new();
+                List<int> result = [];
                 for (int i = 0; i < size; i++)
                 {
                     result.Add(0);
