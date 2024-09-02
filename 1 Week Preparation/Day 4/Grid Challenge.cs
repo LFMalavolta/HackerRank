@@ -1,4 +1,18 @@
-﻿namespace HackerRank._1_Week_Preparation.Day_4
+﻿using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+namespace HackerRank._1_Week_Preparation.Day_4
 {
     internal class Grid_Challenge
     {
@@ -14,24 +28,17 @@
 
             public static string gridChallenge(List<string> grid)
             {
-                string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-
-                for (int i = 0; i < grid.Count; i++)
+                int tamanhoGrid = grid.Count;
+                for (int i = 0; i < tamanhoGrid; i++)
                 {
-                    string item = grid[i];
-                    item = OrdemAlfabetica(item);
+                    grid[i] = OrdemAlfabetica(grid[i]);
                 }
 
-                for (int i = 0; i < grid.Count; i++)
+                for (int col = 0; col < grid[0].Length; col++)
                 {
-                    string linha = grid[i];
-
-                    for (int j = 0; j < grid.Count; j++)
+                    for (int row = 0; row < tamanhoGrid - 1; row++)
                     {
-                        int indexAlfabeto = alfabeto.IndexOf(linha[j]);
-                        int indexAlfabetoComparar = alfabeto.IndexOf(grid[i + j + 1][i]);
-
-                        if (indexAlfabetoComparar > indexAlfabeto)
+                        if (grid[row][col] > grid[row + 1][col])
                         {
                             return "NO";
                         }
@@ -42,7 +49,7 @@
 
             private static string OrdemAlfabetica(string item)
             {
-                char[] chars = item.ToArray();
+                char[] chars = item.ToCharArray();
                 Array.Sort(chars);
                 return new string(chars);
             }
