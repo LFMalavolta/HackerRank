@@ -30,13 +30,20 @@ namespace HackerRank._1_Week_Preparation.Day_4
 
             public static int superDigit(string n, int k)
             {
+                int somaInicial = 0;
+                foreach (char numero in n)
+                {
+                    somaInicial += int.Parse(numero.ToString());
+                    Console.WriteLine($"{numero} -> soma: {somaInicial}");
+                }
+
                 StringBuilder super = new();
                 for (int i = 0; i < k; i++)
                 {
-                    super.Append(n);
+                    super.Append(somaInicial);
                 }
 
-                int soma = 0;   
+                int soma = 0;
                 while (super.Length > 1)
                 {
                     soma = 0;
